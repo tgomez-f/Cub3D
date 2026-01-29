@@ -6,7 +6,7 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 13:34:48 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/01/29 12:11:27 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/01/29 13:59:59 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,5 @@
 void	valid_file(t_data *data)
 {
 	valid_assets(data);
-	
 	valid_map(data);
 }

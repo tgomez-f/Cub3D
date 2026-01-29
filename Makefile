@@ -12,18 +12,21 @@ LIBFT_DIR   = $(INC_DIR)/libft
 MLX_DIR     = minilibx-linux
 OBJ_DIR     = obj
 
+# ---- MLX download ----
+MLX_REPO    = https://github.com/42Paris/minilibx-linux.git
+
 # ---- Sources ----
 SRCS        =  $(SRC_DIR)/main.c \
                $(SRC_DIR)/utils.c \
                $(SRC_DIR)/init_all.c \
                $(SRC_DIR)/mlx_hooks.c \
                $(PARS_DIR)/parsing.c \
-			   $(PARS_DIR)/colors.c \
+               $(PARS_DIR)/colors.c \
                $(PARS_DIR)/alloc_file.c \
                $(PARS_DIR)/valid_file.c \
                $(PARS_DIR)/valid_assets.c \
-			   $(PARS_DIR)/valid_map.c \
-			   $(PARS_DIR)/map_closed.c
+               $(PARS_DIR)/valid_map.c \
+               $(PARS_DIR)/map_closed.c
 
 OBJS        = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
@@ -55,7 +58,7 @@ $(NAME): $(OBJS)
 	@$(CC) $(OBJS) $(LDFLAGS) -o $@
 	@echo "$(GREEN)[OK]$(RESET) Compilation terminée : $(YELLOW)$(NAME)$(RESET)"
 
-# Compilation générique .c -> .o (src ET parsing)
+# Compilation générique .c -> .o
 $(OBJ_DIR)/%.o: %.c $(INC_DIR)/cub3d.h
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
@@ -67,6 +70,10 @@ $(LIBFT):
 
 # ---- MLX ----
 $(MLX):
+	@if [ ! -d "$(MLX_DIR)" ]; then \
+		echo "$(YELLOW)[MLX]$(RESET) Téléchargement de minilibx-linux..."; \
+		git clone --depth=1 $(MLX_REPO) $(MLX_DIR); \
+	fi
 	@make -C $(MLX_DIR)
 
 # ---- Nettoyage ----
@@ -77,8 +84,9 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
+	@rm -rf $(MLX_DIR)
 	@make -C $(LIBFT_DIR) fclean
-	@echo "$(RED)[FCLEAN]$(RESET) binaire supprimé"
+	@echo "$(RED)[FCLEAN]$(RESET) binaire et MLX supprimés"
 
 re: fclean all
 

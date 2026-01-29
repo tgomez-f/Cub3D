@@ -6,11 +6,11 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 20:22:46 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/01/28 17:04:22 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/01/29 13:59:24 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../includes/cub3d.h"
 
 static int	take_color(char *values, int *i)
 {

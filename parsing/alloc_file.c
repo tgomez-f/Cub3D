@@ -6,7 +6,7 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 11:33:47 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/01/29 12:06:11 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/01/29 13:50:47 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	fill_file_grid(t_data *data, char *file)
 	while (line)
 	{
 		data->file_grid[i] = line;
-		//printf("%s", data->file_grid[i]);
 		line = get_next_line(fd);
 		i++;
 	}

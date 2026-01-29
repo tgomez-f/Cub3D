@@ -6,7 +6,7 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 13:32:42 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/01/29 13:25:48 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/01/29 14:05:16 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ void	check_invalid_char(char **grid, int y)
 		x = 0;
 		while (grid[y][x])
 		{
-			if (!grid[y][x] && grid[y][x] != 'N' && grid[y][x] != 'S' && grid[y][x] != 'E'
-				&& grid[y][x] != 'W' && grid[y][x] != '1' && grid[y][x] != '0'
-				&& grid[y][x] != ' ')
+			if (!grid[y][x] && grid[y][x] != 'N' && grid[y][x] != 'S'
+				&& grid[y][x] != 'E' && grid[y][x] != 'W' && grid[y][x] != '1'
+				&& grid[y][x] != '0' && grid[y][x] != ' ')
 			{
 				printf("\n\n\n'%c'", grid[y][x]);
 				exit_error("Invalid char in the map");
@@ -64,7 +64,7 @@ void	check_invalid_char(char **grid, int y)
 int	find_start_map(char **grid)
 {
 	int	y;
-	
+
 	y = 0;
 	while (grid[y])
 	{
@@ -72,17 +72,14 @@ int	find_start_map(char **grid)
 			return (y);
 		y++;
 	}
+	exit_error("There is no map ?");
 	return (-1);
 }
-
-//void	alloc_map(t_data *data)
-//{
-//}
 
 void	valid_map(t_data *data)
 {
 	int	y;
-	
+
 	y = find_start_map(data->file_grid);
 	check_spawn_pos(data, data->file_grid, y);
 	check_invalid_char(data->file_grid, y);

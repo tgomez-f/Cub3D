@@ -6,11 +6,11 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:30:12 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/01/28 18:02:24 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/01/29 13:58:49 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../includes/cub3d.h"
 
 int	count_lines(char *file)
 {

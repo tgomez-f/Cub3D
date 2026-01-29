@@ -6,7 +6,7 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 16:57:27 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/01/28 16:57:04 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/01/29 12:12:10 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,13 @@ void	valid_assets(t_data *data)
 			if (assets_red)
 				exit_error("Map is above assets");
 		}
-		else if (check_map_line(data->file_grid[y]))
+		else if (is_map_line(data->file_grid[y]))
 			assets_red = true;
+		else if (line_empty(data->file_grid[y]))
+		{
+			y++;
+			continue;
+		}
 		else
 			exit_error("Invalid line in the file");
 		y++;

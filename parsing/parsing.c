@@ -6,7 +6,7 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:30:12 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/01/27 17:47:24 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/01/28 18:02:24 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	count_lines(char *file)
 	char	*line;
 
 	count = 0;
-	fd = open(file, O_RDONLY | 0644);
+	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		exit_error("Can't open file");
 	line = get_next_line(fd);
@@ -60,4 +60,5 @@ void	parsing(int ac, char *av1, t_data *data)
 		exit_error("Nombres d'arguments invalides.\n");
 	extention(av1);
 	parse_file(av1, data);
+	
 }

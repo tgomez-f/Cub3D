@@ -6,7 +6,7 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:05:44 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/01/16 17:15:59 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/01/29 13:32:18 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ int	handle_key(int keycode, t_data *data)
 
 void	events_hooks(t_data *data)
 {
-	mlx_hook(data->window, 2, 1L << 0, handle_key, data);
-	mlx_hook(data->window, 17, 0, close_win_mouse, data);
+	mlx_hook(data->mlx->window, 2, 1L << 0, handle_key, data);
+	mlx_hook(data->mlx->window, 17, 0, close_win_mouse, data);
 }

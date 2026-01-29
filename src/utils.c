@@ -6,7 +6,7 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:33:17 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/01/28 15:00:58 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/01/29 12:12:02 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*rm_spaces(char *line)
 	return (line);
 }
 
-int	check_map_line(char *line)
+int	is_map_line(char *line)
 {
 	int	i;
 
@@ -40,4 +40,20 @@ int	check_map_line(char *line)
 	if (line[i] == '0' || line[i] == '1')
 		return (1);
 	return (0);
+}
+
+int	line_empty(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (1);
+	while (str[i])
+	{
+		if (!ft_isspace((unsigned char)str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }

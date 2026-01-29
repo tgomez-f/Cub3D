@@ -1,32 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file.c                                             :+:      :+:    :+:   */
+/*   alloc_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 11:33:47 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/01/27 17:47:15 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/01/29 12:06:11 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
-
-int	line_empty(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (!str)
-		return (1);
-	while (str[i])
-	{
-		if (!ft_isspace((unsigned char)str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
 
 void	fill_file_grid(t_data *data, char *file)
 {
@@ -41,11 +25,6 @@ void	fill_file_grid(t_data *data, char *file)
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (line_empty(line))
-		{
-			line = get_next_line(fd);
-			continue;
-		}
 		data->file_grid[i] = line;
 		//printf("%s", data->file_grid[i]);
 		line = get_next_line(fd);

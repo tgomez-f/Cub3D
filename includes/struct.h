@@ -6,7 +6,7 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:26:49 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/01/28 16:52:28 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/01/29 13:09:56 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define STRUCT_H
 
 # include <stdbool.h>
-# define WIN_HEIGHT 500
-# define WIN_WIDTH 500
+# define HEIGHT 500
+# define WIDTH 500
 
 enum		e_orientation
 {
@@ -62,16 +62,24 @@ typedef struct s_map
 	char	spawn_direction;
 }			t_map;
 
+typedef struct s_mlx
+{
+	void					*mlx;
+	void					*window;
+	void					*img;
+	char					*buffer;
+	int						bits_per_pixel;
+	int						size_line;
+	int						endian;
+	int						buffer_size;
+}	t_mlx;
+
 typedef struct s_data
 {
-	void	*mlx;
-	void	*window;
-
-	int		win_width;
-	int		win_height;
-
-	char	**file_grid;
+	t_mlx	*mlx;
 	t_map	*map;
+	
+	char	**file_grid;
 }			t_data;
 
 #endif

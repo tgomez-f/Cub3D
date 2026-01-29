@@ -6,7 +6,7 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:23:36 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/01/28 15:01:07 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/01/29 13:40:22 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@
 # include <stdbool.h>
 
 
-void	init_all(t_data *data);
+void	init_all(t_data *data, t_map *map, t_mlx *mlx);
+
+void	init_mlx(t_data *data, t_mlx *mlx);
 
 //================================   PARSING ======
 
@@ -37,9 +39,10 @@ void	handle_colors(t_data *data, char *values, char id_color);
 
 void	valid_map(t_data *data);
 
+void	check_map_closed(char **grid, int y);
+
 //=============================== GRAPHICS ========
 
-void	start_graphic(t_data *data);
 
 void	events_hooks(t_data *data);
 
@@ -49,6 +52,9 @@ void	exit_error(char *str);
 
 char	*rm_spaces(char *line);
 
-int	check_map_line(char *line);
+int	is_map_line(char *line);
+
+int	line_empty(char *str);
+
 
 #endif

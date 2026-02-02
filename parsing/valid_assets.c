@@ -6,7 +6,7 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 16:57:27 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/02/02 16:27:19 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/02/02 16:45:42 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,6 @@ int	check_orientation(char *line)
 	return (-1);
 }
 
-void	save_textures(t_data *data, int orientation, char *path)
-{
-	t_texture	*textures[4] = {&data->map->NO_texture, &data->map->SO_texture,
-			&data->map->EA_texture, &data->map->WE_texture};
-
-	check_loaded(textures[orientation], path, data);
-}
-
 static int	check_line_text(char *line, t_data *data)
 {
 	char	*path;
@@ -46,8 +38,8 @@ static int	check_line_text(char *line, t_data *data)
 	if (orientation == -1)
 		return (1);
 	path = rm_spaces(after_space + 2);
-	if (!*path)
-		return (1);
+	if (!*path || *path == '\n')
+		exit_error("Parsing: (Missing texture path)");
 	save_textures(data, orientation, path);
 	return (0);
 }

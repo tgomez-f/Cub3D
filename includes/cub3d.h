@@ -6,7 +6,7 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:23:36 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/01/30 16:44:58 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/02/02 16:47:46 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	check_map_closed(char **grid, int y);
 void	check_loaded(t_texture *texture, char *path, t_data *data);
 
 void	fill_map_grid(t_data *data, int y);
+
+void	save_textures(t_data *data, int orientation, char *path);
 
 //=============================== GRAPHICS ========
 

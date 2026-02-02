@@ -6,7 +6,7 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 13:19:13 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/02/02 15:40:45 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/02/02 16:48:14 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,21 @@ void	check_loaded(t_texture *texture, char *path, t_data *data)
 		(void)data;
 		//load_textures(texture, data, path);
 	}
+}
+
+void	xpm_extention(char *filename)
+{
+	int	map_name_len;
+
+	map_name_len = ft_strlen(filename);
+	if (!ft_strnstr(&filename[map_name_len - 4], ".xpm", 4))
+		exit_error("Parsing: (Texture extention is wrong, Need *.xpm)\n");
+}
+
+void	save_textures(t_data *data, int orientation, char *path)
+{
+	t_texture	*textures[4] = {&data->map->NO_texture, &data->map->SO_texture,
+			&data->map->EA_texture, &data->map->WE_texture};
+	xpm_extention(path);
+	check_loaded(textures[orientation], path, data);
 }

@@ -6,7 +6,7 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 11:20:32 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/01/29 12:19:54 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/02/02 15:39:32 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	check_cell(char c)
 {
 	if (c != '1' && c != '0')
-		exit_error("Map is not closed");
+		exit_error("Parsing: (Map is not closed)");
 }
 
 void	surrounded_walls(char **grid, int y, int x)

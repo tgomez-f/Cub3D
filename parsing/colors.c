@@ -6,7 +6,7 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 20:22:46 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/01/29 13:59:24 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/02/02 15:47:11 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	take_color(char *values, int *i)
 static	void check_loaded_color(t_color *color)
 {
 	if (color->loaded == true)
-		exit_error("Color defined more than once");
+		exit_error("Parsing: (Color defined more than once)");
 	else
 		color->loaded = true;
 }
@@ -51,7 +51,7 @@ void	handle_colors(t_data *data, char *values, char id_color)
 	else if (id_color == 'F')
 		color = &data->map->floor_color;
 	else
-		exit_error("Unknown color id");
+		exit_error("Parsing: (Unknown color identifier)");
 	check_loaded_color(color);
 	color->r = take_color(values, &i);
 	if (values[i++] != ',')

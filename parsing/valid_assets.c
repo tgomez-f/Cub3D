@@ -6,7 +6,7 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 16:57:27 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/01/29 12:12:10 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/02/02 16:27:19 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,15 @@
 
 int	check_orientation(char *line)
 {
-	if (!strncmp(line, "NO", 2))
+	if (!ft_strncmp(line, "NO", 2) && ft_isspace(line[2]))
 		return (NORTH);
-	else if (!strncmp(line, "SO", 2))
+	else if (!ft_strncmp(line, "SO", 2)&& ft_isspace(line[2]))
 		return (SOUTH);
-	else if (!strncmp(line, "EA", 2))
+	else if (!ft_strncmp(line, "EA", 2) && ft_isspace(line[2]))
 		return (EAST);
-	else if (!strncmp(line, "WE", 2))
+	else if (!ft_strncmp(line, "WE", 2) && ft_isspace(line[2]))
 		return (WEST);
 	return (-1);
-}
-
-void	check_loaded(t_texture *texture, char *path)
-{
-	if (texture->loaded)
-		exit_error("Texture defined more than once");
-	else
-	{
-		texture->loaded = true;
-		texture->path = path;
-		// load_textures();
-	}
 }
 
 void	save_textures(t_data *data, int orientation, char *path)
@@ -42,7 +30,7 @@ void	save_textures(t_data *data, int orientation, char *path)
 	t_texture	*textures[4] = {&data->map->NO_texture, &data->map->SO_texture,
 			&data->map->EA_texture, &data->map->WE_texture};
 
-	check_loaded(textures[orientation], path);
+	check_loaded(textures[orientation], path, data);
 }
 
 static int	check_line_text(char *line, t_data *data)
@@ -93,7 +81,7 @@ void	valid_assets(t_data *data)
 			|| check_line_colors(data->file_grid[y], data) == 0)
 		{
 			if (assets_red)
-				exit_error("Map is above assets");
+				exit_error("Parsing (Map is above assets)");
 		}
 		else if (is_map_line(data->file_grid[y]))
 			assets_red = true;
@@ -103,7 +91,7 @@ void	valid_assets(t_data *data)
 			continue;
 		}
 		else
-			exit_error("Invalid line in the file");
+			exit_error("Parsing (Invalid line in the file)");
 		y++;
 	}
 }

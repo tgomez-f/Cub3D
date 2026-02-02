@@ -1,8 +1,8 @@
 
 
 
+NO  ./textures/chiseled_tuff_bricks.xpm
 SO  ./textures/chiseled_tuff.xpm
-NO ./textures/chiseled_tuff_bricks.xpm
 WE ./textures/chiseled_stone_bricks.xpm
 EA ./tex1tures/chiseled_tuff_bricks_top.xpm
 
@@ -13,9 +13,9 @@ C  02,34,220
 
 
 
-11111111111111111111
-10000011000001010101
-10000011000000000001
+	11111111111111111111
+	10000011000001010101
+111110011000000000001
 10111111111111000101
 1011         10000011
 10111111    1100010101

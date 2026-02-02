@@ -20,13 +20,16 @@ SRCS        =  $(SRC_DIR)/main.c \
                $(SRC_DIR)/utils.c \
                $(SRC_DIR)/init_all.c \
                $(SRC_DIR)/mlx_hooks.c \
+			   $(SRC_DIR)/raycasting.c \
                $(PARS_DIR)/parsing.c \
                $(PARS_DIR)/colors.c \
                $(PARS_DIR)/alloc_file.c \
                $(PARS_DIR)/valid_file.c \
                $(PARS_DIR)/valid_assets.c \
                $(PARS_DIR)/valid_map.c \
-               $(PARS_DIR)/map_closed.c
+               $(PARS_DIR)/map_closed.c \
+			   $(PARS_DIR)/load_textures.c \
+			   $(PARS_DIR)/fill_map_grid.c
 
 OBJS        = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 

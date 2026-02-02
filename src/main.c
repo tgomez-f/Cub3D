@@ -6,13 +6,67 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:22:51 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/01/29 13:46:44 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/01/30 16:45:39 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
  
 #include <stdio.h>
+
+void	debug_data(t_data *data);
+
+
+int	main(int ac, char **av)
+{
+	t_data  data;
+	t_map   map;
+    t_mlx   mlx;
+	
+	init_all(&data, &map, &mlx);
+	parsing(ac, av[1], &data);
+    //debug_data(&data);
+	//mlx_loop_hook(data.mlx->mlx, render, &data);
+    events_hooks(&data);
+	mlx_loop(mlx.mlx);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 void	debug_data(t_data *data)
 {
@@ -92,19 +146,4 @@ void	debug_data(t_data *data)
 	}
 
 	printf("===== END DEBUG =====\n");
-}
-
-
-
-int	main(int ac, char **av)
-{
-	t_data  data;
-	t_map   map;
-    t_mlx   mlx;
-	
-	init_all(&data, &map, &mlx);
-	parsing(ac, av[1], &data);
-    debug_data(&data);
-    //events_hooks(&data);
-	//mlx_loop(mlx.mlx);
 }

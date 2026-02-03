@@ -21,6 +21,7 @@ SRCS        =  $(SRC_DIR)/main.c \
                $(SRC_DIR)/init_all.c \
                $(SRC_DIR)/mlx_hooks.c \
 			   $(SRC_DIR)/raycasting.c \
+			   $(SRC_DIR)/free.c \
                $(PARS_DIR)/parsing.c \
                $(PARS_DIR)/colors.c \
                $(PARS_DIR)/alloc_file.c \

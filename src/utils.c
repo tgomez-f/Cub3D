@@ -6,20 +6,20 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:33:17 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/01/29 12:12:02 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/02/03 15:31:43 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	exit_error(char *str)
+void	exit_error(char *str, t_data *data)
 {
 	ft_putstr_fd(RED, 2);
 	ft_putstr_fd("Error: ", 2);
 	ft_putstr_fd(str, 2);
 	ft_putstr_fd(RST, 2);
 	write(2, "\n", 1);
-	//free_all();
+	ft_free_all(data);
 	exit(1);
 }
 

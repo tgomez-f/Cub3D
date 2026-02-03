@@ -6,7 +6,7 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 16:57:27 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/02/02 16:45:42 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/02/03 14:54:21 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	check_line_text(char *line, t_data *data)
 		return (1);
 	path = rm_spaces(after_space + 2);
 	if (!*path || *path == '\n')
-		exit_error("Parsing: (Missing texture path)");
+		exit_error("Parsing: (Missing texture path)", data);
 	save_textures(data, orientation, path);
 	return (0);
 }
@@ -73,7 +73,7 @@ void	valid_assets(t_data *data)
 			|| check_line_colors(data->file_grid[y], data) == 0)
 		{
 			if (assets_red)
-				exit_error("Parsing (Map is above assets)");
+				exit_error("Parsing (Map is above assets)", data);
 		}
 		else if (is_map_line(data->file_grid[y]))
 			assets_red = true;
@@ -83,7 +83,7 @@ void	valid_assets(t_data *data)
 			continue;
 		}
 		else
-			exit_error("Parsing (Invalid line in the file)");
+			exit_error("Parsing (Invalid line in the file)", data);
 		y++;
 	}
 }

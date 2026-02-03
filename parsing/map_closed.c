@@ -6,27 +6,27 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 11:20:32 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/02/02 15:39:32 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/02/03 15:03:26 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-static void	check_cell(char c)
+static void	check_cell(char c, t_data *data)
 {
 	if (c != '1' && c != '0')
-		exit_error("Parsing: (Map is not closed)");
+		exit_error("Parsing: (Map is not closed)", data);
 }
 
-void	surrounded_walls(char **grid, int y, int x)
+void	surrounded_walls(char **grid, int y, int x, t_data *data)
 {
-	check_cell(grid[y - 1][x]);
-	check_cell(grid[y + 1][x]);
-	check_cell(grid[y][x - 1]);
-	check_cell(grid[y][x + 1]);
+	check_cell(grid[y - 1][x], data);
+	check_cell(grid[y + 1][x], data);
+	check_cell(grid[y][x - 1], data);
+	check_cell(grid[y][x + 1], data);
 }
 
-void	check_map_closed(char **grid, int y)
+void	check_map_closed(t_data *data, char **grid, int y)
 {
 	int	x;
 
@@ -36,7 +36,7 @@ void	check_map_closed(char **grid, int y)
 		while (grid[y][x])
 		{
 			if (grid[y][x] == '0')
-				surrounded_walls(grid, y, x);
+				surrounded_walls(grid, y, x, data);
 			x++;
 		}
 		y++;

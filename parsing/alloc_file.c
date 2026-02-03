@@ -6,7 +6,7 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 11:33:47 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/02/02 15:41:19 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/02/03 14:51:30 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	fill_file_grid(t_data *data, char *file)
 	i = 0;
 	fd = open(file, O_RDONLY | 0644);
 	if (fd < 0)
-		exit_error("File: (Can't open file)");
+		exit_error("File: (Can't open file)", data);
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -37,6 +37,6 @@ void	alloc_file(int file_height, t_data *data, char *file)
 {
 	data->file_grid = malloc(sizeof(char *) * (file_height + 1));
 	if (!data->file_grid)
-		exit_error("Alloc: (Allocation of file failed)");
+		exit_error("Alloc: (Allocation of file failed)", data);
 	fill_file_grid(data, file);
 }

@@ -6,13 +6,13 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:30:12 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/02/02 15:39:17 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/02/03 15:26:36 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	count_lines(char *file)
+int	count_lines(char *file, t_data *data)
 {
 	int		fd;
 	int		count;
@@ -21,7 +21,7 @@ int	count_lines(char *file)
 	count = 0;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		exit_error("File: (Can't open file)");
+		exit_error("File: (Can't open file)", data);
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -37,28 +37,27 @@ void	parse_file(char *map_file, t_data *data)
 {
 	int	file_height;
 
-	file_height = count_lines(map_file);
+	file_height = count_lines(map_file, data);
 	if (file_height <= 0)
-		exit_error("File: (The file is empty)");
+		exit_error("File: (The file is empty)", data);
 	alloc_file(file_height, data, map_file);
 	valid_file(data);
 }
 
 
-void	extention(char *filename)
+void	extention(char *filename, t_data *data)
 {
 	int	map_name_len;
 
 	map_name_len = ft_strlen(filename);
 	if (!ft_strnstr(&filename[map_name_len - 4], ".cub", 4))
-		exit_error("File: (Map file extention is wrong, Need *.cub)\n");
+		exit_error("File: (Map file extention is wrong, Need *.cub)\n", data);
 }
 
 void	parsing(int ac, char *av1, t_data *data)
 {
 	if (ac != 2)
-		exit_error("Nombres d'arguments invalides.\n");
-	extention(av1);
+		exit_error("Nombres d'arguments invalides.\n", data);
+	extention(av1, data);
 	parse_file(av1, data);
-	
 }

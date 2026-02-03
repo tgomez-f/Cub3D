@@ -6,7 +6,7 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 18:23:36 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/02/02 16:47:46 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/02/03 15:39:26 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	handle_colors(t_data *data, char *values, char id_color);
 
 void	valid_map(t_data *data);
 
-void	check_map_closed(char **grid, int y);
+void	check_map_closed(t_data *data, char **grid, int y);
 
 void	check_loaded(t_texture *texture, char *path, t_data *data);
 
@@ -57,7 +57,9 @@ void	events_hooks(t_data *data);
 
 //===============================  UTILS ==========
 
-void	exit_error(char *str);
+void	exit_error(char *str, t_data *data);
+
+void	ft_free_all(t_data *data);
 
 char	*rm_spaces(char *line);
 

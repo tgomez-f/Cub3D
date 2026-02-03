@@ -6,7 +6,7 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 13:32:42 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/02/02 15:37:39 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/02/03 15:07:17 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void	check_spawn_pos(t_data *data, char **grid, int y)
 		y++;
 	}
 	if (count_spawn != 1)
-		exit_error("Parsing (0 or more than 1 spawn)");
+		exit_error("Parsing (0 or more than 1 spawn)", data);
 }
 
-void	check_invalid_char(char **grid, int y)
+void	check_invalid_char(t_data *data, char **grid, int y)
 {
 	int	x;
 
@@ -54,7 +54,7 @@ void	check_invalid_char(char **grid, int y)
 				&& grid[y][x] != '0' && grid[y][x] != ' ')
 			{
 				printf("\n\n\n'%c'", grid[y][x]);
-				exit_error("Parsing (Invalid char in the map)");
+				exit_error("Parsing (Invalid char in the map)", data);
 			}
 			x++;
 		}
@@ -62,7 +62,7 @@ void	check_invalid_char(char **grid, int y)
 	}
 }
 
-int	find_start_map(char **grid)
+int	find_start_map(t_data *data, char **grid)
 {
 	int	y;
 
@@ -73,7 +73,7 @@ int	find_start_map(char **grid)
 			return (y);
 		y++;
 	}
-	exit_error("There is no map ?");
+	exit_error("There is no map ?", data);
 	return (-1);
 }
 
@@ -81,9 +81,9 @@ void	valid_map(t_data *data)
 {
 	int	y;
 
-	y = find_start_map(data->file_grid);
+	y = find_start_map(data, data->file_grid);
 	fill_map_grid(data, y);
 	check_spawn_pos(data, data->file_grid, y);
-	check_invalid_char(data->file_grid, y);
-	check_map_closed(data->file_grid, y);
+	check_invalid_char(data, data->file_grid, y);
+	check_map_closed(data, data->file_grid, y);
 }

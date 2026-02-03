@@ -6,7 +6,7 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:05:44 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/01/29 13:32:18 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/02/03 14:55:08 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	close_win_mouse(t_data *data)
 {
 	(void)data;
-	exit_error("Oh no the window has been destroy.\n");
+	exit_error("Oh no the window has been destroy.\n", data);
 	return (0);
 }
 
@@ -23,7 +23,7 @@ int	handle_key(int keycode, t_data *data)
 {
 	(void)data;
 	if (keycode == XK_Escape)
-		exit_error("Oh no the window has been destroy.\n");
+		exit_error("Oh no the window has been destroy.\n", data);
 	return (0);
 }
 

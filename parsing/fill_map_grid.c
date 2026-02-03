@@ -6,7 +6,7 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 14:34:45 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/02/02 15:42:15 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/02/03 14:52:34 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	fill_map_grid(t_data *data, int y)
 	data->map->map_grid = malloc(sizeof(char *)
 			* (data->map->map_height + 1));
 	if (!data->map->map_grid)
-		exit_error("Alloc: Malloc failed (map_grid)");
+		exit_error("Alloc: Malloc failed (map_grid)", data);
 
 	i = 0;
 	while (i < data->map->map_height)
@@ -60,7 +60,7 @@ void	fill_map_grid(t_data *data, int y)
 		data->map->map_grid[i] = malloc(sizeof(char)
 				* (data->map->map_width + 1));
 		if (!data->map->map_grid[i])
-			exit_error("Alloc: Malloc failed (map_grid line)");
+			exit_error("Alloc: Malloc failed (map_grid line)", data);
 
 		j = 0;
 		while (j < data->map->map_width)

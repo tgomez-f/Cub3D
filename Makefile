@@ -28,7 +28,7 @@ SRCS        =  $(SRC_DIR)/main.c \
                $(PARS_DIR)/valid_file.c \
                $(PARS_DIR)/valid_assets.c \
                $(PARS_DIR)/valid_map.c \
-               $(PARS_DIR)/map_closed.c \
+               $(PARS_DIR)/is_map_closed.c \
 			   $(PARS_DIR)/load_textures.c \
 			   $(PARS_DIR)/fill_map_grid.c
 

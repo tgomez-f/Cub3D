@@ -6,7 +6,7 @@
 /*   By: tgomez-f <tgomez-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 20:22:46 by tgomez-f          #+#    #+#             */
-/*   Updated: 2026/02/03 15:07:01 by tgomez-f         ###   ########.fr       */
+/*   Updated: 2026/02/03 16:15:38 by tgomez-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ static int	take_color(char *values, int *i, t_data *data)
 	int	new_value;
 
 	while (values[*i] && ft_isspace(values[*i]))
-	(*i)++;
-	if (values[*i] && !ft_isdigit(values[*i]))
+		(*i)++;
+	if (!values[*i])
+		exit_error("RGB values wrong (missing value)", data);
+	if (!ft_isdigit(values[*i]))
 		exit_error("RGB values wrong (value is not digits)", data);
 	new_value = 0;
 	while (ft_isdigit(values[*i]))
@@ -26,6 +28,8 @@ static int	take_color(char *values, int *i, t_data *data)
 		new_value = new_value * 10 + (values[*i] - '0');
 		(*i)++;
 	}
+	while (values[*i] && ft_isspace(values[*i]))
+		(*i)++;
 	if (new_value > 255)
 		exit_error("RGB values wrong (value is above 255)", data);
 	return (new_value);
@@ -60,8 +64,6 @@ void	handle_colors(t_data *data, char *values, char id_color)
 	if (values[i++] != ',')
 		exit_error("RGB values wrong (missing comma 2)", data);
 	color->b = take_color(values, &i, data);
-	if (!values[i])
-		exit_error("RGB values wrong (missing input)", data);
 	while (values[i] && ft_isspace(values[i]))
 		i++;
 	if (values[i])
